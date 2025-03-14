@@ -31,11 +31,12 @@ jobs:
    #   - name: Terraform Destroy
    #     run: terraform destroy -auto-approve
 
-   
+
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
 
+        
   build-and-push-docker:
     needs: deploy
     runs-on: ubuntu-latest
