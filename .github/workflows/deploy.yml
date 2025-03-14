@@ -81,6 +81,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+          
       - name: Update ECS Service
         run: |
           aws ecs update-service --cluster ecs-cluster-mvp --service my-application-service --force-new-deployment
