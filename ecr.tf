@@ -1,17 +1,8 @@
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ecr:CompleteLayerUpload",
-                "ecr:UploadLayerPart",
-                "ecr:InitiateLayerUpload",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:PutImage",
-                "ecr:BatchGetImage"
-            ],
-            "Resource": "arn:aws:ecr:us-east-1:123456789012:repository/teddy-application-repository"
-        }
-    ]
+resource "aws_ecr_repository" "application_repository" {
+  name                 = "teddy-application-repository"
+  image_tag_mutability = "MUTABLE"
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.application_repository.repository_url
 }
