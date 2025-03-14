@@ -36,8 +36,6 @@ jobs:
         run: terraform apply -auto-approve
 
 
-        
-
   build-and-push-docker:
     needs: deploy
     runs-on: ubuntu-latest
