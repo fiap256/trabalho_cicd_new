@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "application_repository" {
-  name                 = "cicd-application-repository"
+  name                 = "teddy-application-repository"
   image_tag_mutability = "MUTABLE"
 }
 
