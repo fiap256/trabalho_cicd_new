@@ -54,12 +54,12 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         run: |
-           docker build -t fiapcicd-application-repository:$GITHUB_SHA .
-           docker tag fiapcicd-application-repository:$GITHUB_SHA 423831492861.dkr.ecr.us-east-1.amazonaws.com/fiapcicd-application-repository:$GITHUB_SHA
-           docker push 423831492861.dkr.ecr.us-east-1.amazonaws.com/fiapcicd-application-repository:$GITHUB_SHA
+           docker build -t teddy-application-repository:$GITHUB_SHA .
+           docker tag teddy-application-repository:$GITHUB_SHA 423831492861.dkr.ecr.us-east-1.amazonaws.com/teddy-application-repository:$GITHUB_SHA
+           docker push 423831492861.dkr.ecr.us-east-1.amazonaws.com/teddy-application-repository:$GITHUB_SHA
       - name: Clean up old images from Amazon ECR
         run: |
-          repository="fiapcicd-application-repository"
+          repository="teddy-application-repository"
           keep_last=1
           images=$(aws ecr describe-images --repository-name $repository --query 'sort_by(imageDetails,& imagePushedAt)[].imageDigest' --output text)
           images_to_delete=$(echo $images | tr ' ' '\n' | tail -n +$(($keep_last+1)))
