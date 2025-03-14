@@ -5,7 +5,14 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 
 data "aws_iam_policy_document" "ecs_tasks_trust_relationship" {
   statement {
-    actions = ["sts:AssumeRole"]
+    actions =  [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:CompleteLayerUpload",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart"
+      ]
     principals {
       type        = "Service"
       identifiers = ["ecs-tasks.amazonaws.com"]
